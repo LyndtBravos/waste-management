@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+
+  <span style="font-weight:bold;">
+    Enviro365
+  </span>
+
+  <span style="flex:1 1 auto"></span>
+
+  <button mat-button routerLink="/dashboard">
+    Dashboard
+  </button>
+
+  <button mat-button routerLink="/bins">
+    Bins
+  </button>
+
+  <button mat-button routerLink="/waste">
+    Waste Records
+  </button>
+
+  <button mat-button routerLink="/pickups">
+    Pickups
+  </button>
+
+  <button mat-button (click)="logout()">
+    Logout
+  </button>
+</mat-toolbar>

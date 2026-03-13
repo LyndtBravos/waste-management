@@ -1,0 +1,75 @@
+.layout {
+  height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 220px;
+  background: #1b6781;
+  color: white;
+  transition: width 0.2s ease;
+}
+
+/* Collapsed sidebar */
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.logo {
+  padding: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+/* NAV LINKS */
+
+mat-nav-list a {
+  color: white !important;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+mat-nav-list a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ICONS */
+
+mat-icon {
+  margin-right: 10px;
+  color: white;
+}
+
+/* TOOLBAR */
+
+mat-toolbar {
+  background: #1b6781;
+  color: white;
+  font-weight: 600;
+}
+
+/* PINK BUTTONS */
+
+.pink-btn {
+  background: #ec4899 !important;
+  color: white !important;
+}
+
+/* PAGE CONTENT */
+
+.content {
+  padding: 24px;
+}
+
+/* FLEX SPACER */
+
+.spacer {
+  flex: 1;
+}
+
+.active-link {
+  background: rgba(255,255,255,0.25);
+  border-left: 4px solid #ec4899;
+}

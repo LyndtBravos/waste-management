@@ -1,0 +1,75 @@
+<mat-sidenav-container class="layout" *ngIf="!isLoginPage()">
+
+  <mat-sidenav
+    mode="side"
+    [opened]="true"
+    [class.collapsed]="!sidebarOpen"
+    class="sidebar">
+  
+  
+    <h2 class="logo">Enviro365</h2> <mat-nav-list> 
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link">
+        <mat-icon>dashboard</mat-icon> 
+        <span *ngIf="sidebarOpen">Dashboard</span>
+      </a> 
+      
+      <a mat-list-item routerLink="/bins" routerLinkActive="active-link">
+        <mat-icon>delete</mat-icon> 
+        <span *ngIf="sidebarOpen">Bins</span>
+      </a> 
+      
+      <a mat-list-item routerLink="/waste" routerLinkActive="active-link">
+        <mat-icon>recycling</mat-icon> 
+        <span *ngIf="sidebarOpen">Waste</span>
+      </a> 
+      
+      <a mat-list-item routerLink="/pickups" routerLinkActive="active-link">
+        <mat-icon>local_shipping</mat-icon> 
+        <span *ngIf="sidebarOpen">Pickups</span>
+      </a> 
+    </mat-nav-list> 
+  </mat-sidenav> 
+
+  <mat-sidenav-content> 
+    <mat-toolbar>
+
+      <div class="toolbar-content">
+
+        <button
+          mat-icon-button
+          class="pink-btn"
+          (click)="toggleSidebar()">
+
+          <mat-icon>menu</mat-icon>
+
+        </button>
+
+        <span
+          class="toolbar-title"
+          [class.collapsed]="!sidebarOpen">
+
+          Enviro365 Waste Management
+
+        </span>
+
+        <span class="spacer"></span>
+
+        <button
+          mat-raised-button
+          class="pink-btn"
+          *ngIf="isLoggedIn()"
+          (click)="logout()">
+
+          Logout
+
+        </button>
+
+      </div>
+
+    </mat-toolbar>
+    
+    <div class="content"> 
+      <router-outlet></router-outlet> <!-- <router-outlet *ngIf="isLoginPage()"></router-outlet> -->
+    </div> 
+  </mat-sidenav-content> 
+</mat-sidenav-container>

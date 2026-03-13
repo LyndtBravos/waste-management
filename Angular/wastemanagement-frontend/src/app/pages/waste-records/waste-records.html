@@ -1,0 +1,69 @@
+<h2>Waste Records</h2>
+
+<button mat-raised-button color="primary" (click)="openCreateForm()">
+  Add Record
+</button>
+
+<br><br>
+
+<mat-form-field appearance="outline">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)">
+</mat-form-field>
+
+<br><br>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let r">{{r.id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="wasteType">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Waste Type</th>
+    <td mat-cell *matCellDef="let r">{{r.wasteType}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+    <td mat-cell *matCellDef="let r">{{r.quantity}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="disposalDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+    <td mat-cell *matCellDef="let r">{{r.disposalDate}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+    <td mat-cell *matCellDef="let r">
+
+      <button mat-button color="primary"
+        (click)="openEditForm(r)">
+        Edit
+      </button>
+
+      <button mat-button color="warn"
+        (click)="deleteRecord(r.id)">
+        Delete
+      </button>
+
+    </td>
+
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20, 50, 100]"
+  (page)="savePageSize($event)">
+</mat-paginator>
+
+<br><br>

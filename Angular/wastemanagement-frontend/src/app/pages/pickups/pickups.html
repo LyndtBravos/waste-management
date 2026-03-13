@@ -1,0 +1,130 @@
+<h2>Pickups</h2>
+
+<button mat-raised-button color="primary" (click)="openCreateForm()">
+  Schedule Pickup
+</button>
+
+<br><br>
+
+<mat-form-field appearance="outline">
+  <mat-label>Search pickups</mat-label>
+  <input matInput (keyup)="applyFilter($event)">
+</mat-form-field>
+
+<br><br>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let pickup">{{pickup.id}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="wasteType">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Waste</th>
+    <td mat-cell *matCellDef="let pickup">{{pickup.wasteType}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="pickupDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+    <td mat-cell *matCellDef="let pickup">{{pickup.pickupDate}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+    <td mat-cell *matCellDef="let pickup">{{pickup.address}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+    <td mat-cell *matCellDef="let pickup">
+      <mat-chip [ngClass]="pickup.status.toLowerCase()">
+        {{pickup.status}}
+      </mat-chip>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="notes">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
+    <td mat-cell *matCellDef="let pickup">{{pickup.notes}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let pickup">
+
+      <button mat-button color="primary"
+        (click)="openEditForm(pickup)">
+        Edit
+      </button>
+
+      <button mat-button
+        (click)="updateStatus(pickup,'COMPLETED')">
+        Complete
+      </button>
+
+      <button mat-button color="warn"
+        (click)="deletePickup(pickup.id!)">
+        Delete
+      </button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<div *ngIf="showForm" class="modal">
+  <div class="modal-content">
+    <h3>{{ editingPickup ? 'Edit Pickup' : 'Schedule Pickup' }}</h3>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Waste Type</mat-label>
+      <input matInput [(ngModel)]="newPickup.wasteType" [readonly]="isEditing">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pickup Date</mat-label>
+      <input matInput type="date" [(ngModel)]="newPickup.pickupDate" [readonly]="isEditing">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput [(ngModel)]="newPickup.address" [readonly]="isEditing">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Notes</mat-label>
+      <textarea matInput [(ngModel)]="newPickup.notes" [readonly]="isEditing"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+  <mat-label>Status</mat-label>
+
+  <mat-select [(ngModel)]="newPickup.status">
+    <mat-option value="PENDING">Pending</mat-option>
+    <mat-option value="SCHEDULED">Scheduled</mat-option>
+    <mat-option value="COMPLETED">Completed</mat-option>
+    <mat-option value="CANCELLED">Cancelled</mat-option>
+  </mat-select>
+</mat-form-field>
+
+    <br>
+
+    <button mat-raised-button color="primary" (click)="savePickup()">
+      Save
+    </button>
+
+    <button mat-button (click)="closeModal()">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<mat-paginator
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5,10,20,50,100]"
+  (page)="savePageSize($event)">
+</mat-paginator>

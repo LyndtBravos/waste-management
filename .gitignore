@@ -1,0 +1,75 @@
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Java / Maven
+# =========================
+target/
+*.jar
+*.war
+*.class
+*.ear
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# =========================
+# Spring Boot
+# =========================
+*.pid
+*.seed
+*.pid.lock
+
+# =========================
+# Node / Angular
+# =========================
+node_modules/
+dist/
+.angular/
+coverage/
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+
+# =========================
+# IDE Files
+# =========================
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# =========================
+# Build Output
+# =========================
+build/
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/

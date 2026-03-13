@@ -1,0 +1,33 @@
+<div class="auth-container">
+
+  <mat-card class="auth-card">
+
+    <h2 class="auth-title" style="align-items: center;">Enviro365 Waste Management
+      <br><br>Login</h2>
+
+    <form (ngSubmit)="login()">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" name="username" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="password" name="password" required>
+      </mat-form-field>
+
+      <button mat-raised-button class="pink-btn full-width" type="submit">
+        Login
+      </button>
+
+    </form>
+
+    <div class="auth-link">
+      Don't have an account?
+      <a routerLink="/register">Register</a>
+    </div>
+
+  </mat-card>
+
+</div>
