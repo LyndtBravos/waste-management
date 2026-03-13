@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🌍 Enviro365 Waste Management Analytics Dashboard
 
 A **full-stack waste management analytics application** built with **Spring Boot (Java)** and **Angular**.
